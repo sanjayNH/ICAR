@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to SAM Local",
+            "type": "node",
+            "request": "attach",
+            "address": "127.0.0.1",
+            "port": 5858,
+            "localRoot": "${workspaceRoot}/src",
+            "remoteRoot": "/var/task",
+            "timeout": 500000, 
+            "stopOnEntry": false,
+            "restart": true
+           
+        }
+    ]
+}

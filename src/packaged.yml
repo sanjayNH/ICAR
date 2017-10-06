@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ICar Sample Serverless Application.
+Resources:
+  ProductsApi:
+    Properties:
+      CodeUri: s3://icar-deploy/b552e06304524dc806d7fb96f4922f47
+      Events:
+        CreateProduct:
+          Properties:
+            Method: post
+            Path: /products
+          Type: Api
+        ListProducts:
+          Properties:
+            Method: get
+            Path: /products
+          Type: Api
+        Product:
+          Properties:
+            Method: any
+            Path: /products/{product}
+          Type: Api
+      Handler: products.handler
+      Runtime: nodejs6.10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
