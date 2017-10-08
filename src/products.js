@@ -29,10 +29,10 @@ function loadConfig(context, callback) {
 
     var params = {
         Key: {
-            stage: {
+            key_stage: {
                 S: obj_key
             },
-            option: {
+            key_option: {
                 S: "db"
             }
         },
@@ -99,6 +99,8 @@ function loadConfigCallback(env_config, lambdaCallback){
 
 
 exports.handler = (event, context, callback) => {
+    
+  //  handleRequest(event, callback);
     
      // load the config, then use in handle request 
      loadConfig(context, function (env_config) {

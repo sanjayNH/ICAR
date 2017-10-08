@@ -1,0 +1,15 @@
+{
+    "TableName": "icar-config",
+    "KeySchema": [
+      { "AttributeName": "key_stage", "KeyType": "HASH" },
+      { "AttributeName": "key_option", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+      { "AttributeName": "key_stage", "AttributeType": "S" },
+      { "AttributeName": "key_option", "AttributeType": "S" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 1,
+      "WriteCapacityUnits": 1
+    }
+}

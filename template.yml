@@ -7,9 +7,10 @@ Resources:
   ProductsApi:
     Type: AWS::Serverless::Function
     Properties:
+      Timeout: 100
       Handler: products.handler
       Runtime: nodejs6.10
-      CodeUri: ./
+      CodeUri: ./src
       Events:
         ListProducts:
           Type: Api
