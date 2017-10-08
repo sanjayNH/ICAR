@@ -6,13 +6,19 @@ services:
     ports: 
       - "3306:3306"
     restart: always
+    volumes:
+      - /var/lib/mysql
     environment: 
-      - MYSQL_DATABASE=icar3
-      - MYSQL_ROOT_PASSWORD=icarpassword
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   dynamodb:
     image: cnadiminti/dynamodb-local
     ports:
       - "8000:8000"
+    volumes: 
+      - /dynamodb_local_db
+volumes:
+  dynamo-data:
+  mysql-data:
 networks:
   default:
     external:

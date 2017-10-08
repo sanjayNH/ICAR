@@ -2,9 +2,12 @@
 var AWS = require('aws-sdk');
 var ddb = new AWS.DynamoDB();
 
+var connectionString;
+
 // example of getting config values from DynamoDB
 function loadConfig(context, callback) {
 
+    
     var functionName = context.functionName;
     var functionArn = context.invokedFunctionArn;
     var alias = functionArn.split(":").pop();
@@ -15,7 +18,11 @@ function loadConfig(context, callback) {
 
     //the code is running on a local devs maching in SAM Local
     if (process.env.AWS_SAM_LOCAL == "true")
+    {
         alias = "samlocal";
+        ddb.endpoint = new AWS.Endpoint('http://dynamodb:8000');
+    }
+        
 
     var obj_key = alias;
     console.log('DDB key:[' + obj_key + ']')
@@ -84,10 +91,17 @@ function handleRequest(event, callback) {
     }
 }
 
+function loadConfigCallback(env_config, lambdaCallback){
+    console.log('My db connectionString:', env_config.Item.connectionString.S)
+    //do something with config values...
+    handleRequest(event, callback);
+}
+
+
 exports.handler = (event, context, callback) => {
     
-    // load the config, then use in handle request 
-    loadConfig(context, function (env_config) {
+     // load the config, then use in handle request 
+     loadConfig(context, function (env_config) {
         console.log('My db connectionString:', env_config.Item.connectionString.S)
         //do something with config values...
         handleRequest(event, callback);

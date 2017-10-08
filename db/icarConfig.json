@@ -1,0 +1,6 @@
+{
+    "connectionString":{ "S": "server=mysql;database=icar3;uid=root;"},
+    "key_stage":{ "S": "samlocal"},
+    "key_option":{ "S": "db"}
+}
+    

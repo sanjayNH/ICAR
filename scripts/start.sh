@@ -1,10 +1,43 @@
-# create docker network for our environment if it does not exist
-docker network create icar-network
-# start up mysql and dynamodb local containers defined in docker-compose.yml
+# reset db and mysql containers
+docker-compose down
+# start up mysql and dynamodb local containers defined in docker-compose.yml (if not already from provision.sh)
 docker-compose up -d
-docker-compose exec mysql sh -c 'exec mysqldump  -uroot -p"icarpassword" mysql' < ./db/icar3.sql
-# load current db schema and data dump
-docker exec -i  08abdc3d3154 mysql -uroot -picarpassword < db/icar3.sql
+
+
+# check if icar-config table exists, if not create
+aws dynamodb --endpoint-url http://localhost:8000 list-tables  | grep 'icar-config' &> /dev/null
+if [ $? == 1 ]; then
+   echo "dynamo table does not exists, create"
+    # create icar-config dynamodb table
+    aws dynamodb create-table \
+        --endpoint-url http://localhost:8000 \
+        --table-name icar-config \
+        --attribute-definitions \
+            AttributeName=key_stage,AttributeType=S \
+            AttributeName=key_option,AttributeType=S \
+        --key-schema AttributeName=key_stage,KeyType=HASH AttributeName=key_option,KeyType=RANGE \
+        --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 
+
+    #import config settings for dynamodb local (must get from dev lead and place in db folder)
+    aws dynamodb put-item --endpoint-url http://localhost:8000  --table-name icar-config --item file://${PWD}/db/icarConfig.json 
+else
+    echo "dynamo table exists, skipping create"
+fi
+
+
+while ! docker exec -i icar_mysql_1 mysqladmin -uroot  ping --silent; do
+    echo "Waiting for database connection..."
+    sleep 10
+done
+
+
+docker exec -i  icar_mysql_1 mysql -uroot  -e "show databases;" | grep "icar3" &> /dev/null
+if [ $? == 1 ]; then
+    echo "mysql db does not exist, create and import latest schema"
+    # load mysql schema
+    docker exec -i  icar_mysql_1 mysql -uroot  < db/icar3.sql
+fi
+
 # start up serverless application model (SAM) api
 # -d is the port for node debugging
 # --docker-network attaches the SAM docker container to the same network as the mysql and dynamodb containers
