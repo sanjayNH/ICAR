@@ -1,0 +1,72 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ICAR",
+		"_postman_id": "32476601-c718-7f8e-4590-0832b882a07b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POC",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"url": "{{url}}/products",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By Id",
+					"request": {
+						"url": "{{url}}/products/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"url": "{{url}}/products",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"url": "{{url}}/products/2",
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product by Id",
+					"request": {
+						"url": "{{url}}/products/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
