@@ -22,6 +22,10 @@ The following applications and tools will need to be installed to run the applic
 
 Open an elevated(Run as Administrator) powershell session and execute the following command:
 
+Configure AWS cli credential:
+```
+aws configure
+```
 Enable powershell script execution
 ```
 Set-ExecutionPolicy Bypass -Scope CurrentUser
