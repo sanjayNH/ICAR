@@ -1,8 +1,6 @@
 # create isolated network for icar dev
 docker network create icar-network
 
-# reset db and mysql containers
-docker-compose stop
 # start up mysql and dynamodb local containers defined in docker-compose.yml (if not already from provision.sh)
 docker-compose up -d
 
@@ -46,7 +44,7 @@ fi
 # start up serverless application model (SAM) api
 # -d is the port for node debugging
 # --docker-network attaches the SAM docker container to the same network as the mysql and dynamodb containers
-cd src
+
 if [[ "$@" == "debug" ]]; then 
     sam local start-api -d 5858 --docker-network icar-network
 else

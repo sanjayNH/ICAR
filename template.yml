@@ -4,26 +4,27 @@ Description: ICar Sample Serverless Application.
 
 Resources:
 
-  ProductsApi:
+  LoginApi:
     Type: AWS::Serverless::Function
     Properties:
-      Timeout: 100
-      Handler: products.handler
+      Handler: index.login
       Runtime: nodejs6.10
-      CodeUri: ./src
+      CodeUri: ./src/auth
       Events:
-        ListProducts:
+        Login:
           Type: Api
           Properties:
-            Path: /products
-            Method: get
-        CreateProduct:
-          Type: Api
-          Properties:
-            Path: /products
+            Path: /login
             Method: post
-        Product:
+  LogoutApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.logout
+      Runtime: nodejs6.10
+      CodeUri: ./src/auth
+      Events:
+        Logout:
           Type: Api
           Properties:
-            Path: /products/{product}
-            Method: any
+            Path: /logout
+            Method: post

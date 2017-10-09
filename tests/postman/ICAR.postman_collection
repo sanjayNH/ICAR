@@ -8,60 +8,71 @@
 	},
 	"item": [
 		{
-			"name": "POC",
+			"name": "Auth",
 			"description": "",
 			"item": [
 				{
-					"name": "Get All Products",
+					"name": "Login",
 					"request": {
-						"url": "{{url}}/products",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Product By Id",
-					"request": {
-						"url": "{{url}}/products/2",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Create Product",
-					"request": {
-						"url": "{{url}}/products",
+						"url": "{{url}}/login",
 						"method": "POST",
-						"header": [],
-						"body": {},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\t\"countryCode\": \"US\",\r\t\"languageCode\": \"en-us\",\r\t\"userId\": \"ES25801\",\r\t\"password\": \"testing\",\r\t\"dealerCode\": \"70052\",\r\t\"appVersion\": \"1.0\",\r\t\"type\": \"ipad\",\r\t\"appName\": \"icar\"\r}\r\r"
+						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Update Product",
+					"name": "Logout",
 					"request": {
-						"url": "{{url}}/products/2",
-						"method": "PUT",
-						"header": [],
-						"body": {},
+						"url": "{{url}}/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r \"sessionToken\": \"22f06135-50d3-448a-9801-50145d0ab557\"\r}"
+						},
 						"description": ""
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"description": "",
+			"item": [
 				{
-					"name": "Delete Product by Id",
+					"name": "Add Client",
 					"request": {
-						"url": "{{url}}/products/2",
-						"method": "DELETE",
-						"header": [],
-						"body": {},
+						"url": "{{url}}/client",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r  \"familyOpportunity\": {\r    \"familyOpportunityKey\": 0,\r    \"clients\": [\r      {\r        \"clientKey\": 1,\r        \"isModified\": true,\r        \"personHashId\": \"af535675-25d5-455c-8c15-d4f97a436d06\",\r        \"prefix\": \"2\",\r        \"firstName\": \"Dave\",\r        \"middleInitial\": \"\",\r        \"lastName\": \"Smith\",\r        \"suffix\": \"\",\r        \"companyName\": \"\",\r        \"preferLanguageCode\": \"en-us\",\r        \"preferPhoneTypeCode\": \"M\",\r        \"preferEmailTypeCode\": \"P\",\r        \"vehicleAttribPreferences\": [\r          \"C\",\r          \"S\"\r        ],\r        \"email\": [\r          {\r            \"code\": \"\",\r            \"emailId\": \"\"\r          }\r        ],\r        \"phoneNumber\": [\r          {\r            \"type\": \"\",\r            \"countryCode\": \"\",\r            \"number\": \"\",\r            \"mobileCarrier\": \"\"\r          }\r        ],\r        \"address\": {\r          \"addressLine1\": \"123 Anylane Rd\",\r          \"addressLine2\": \"\",\r          \"city\": \"Franklin\",\r          \"state\": \"TN\",\r          \"country\": \"USA\",\r          \"zip\": \"37067\"\r        }\r      },\r      {\r        \"clientKey\": 2,\r        \"isModified\": true,\r        \"personHashId\": \"af535675-25d5-455c-8c15-d4f97a436d06\",\r        \"prefix\": \"2\",\r        \"firstName\": \"Nancy\",\r        \"middleInitial\": \"\",\r        \"lastName\": \"Smith\",\r        \"suffix\": \"\",\r        \"companyName\": \"\",\r        \"preferLanguageCode\": \"en-us\",\r        \"preferPhoneTypeCode\": \"M\",\r        \"preferEmailTypeCode\": \"P\",\r        \"vehicleAttribPreferences\": [\r          \"C\",\r          \"S\"\r        ],\r        \"email\": [\r          {\r            \"code\": \"\",\r            \"emailId\": \"\"\r          }\r        ],\r        \"phoneNumber\": [\r          {\r            \"type\": \"\",\r            \"countryCode\": \"\",\r            \"number\": \"\",\r            \"mobileCarrier\": \"\"\r          }\r        ],\r        \"address\": {\r          \"addressLine1\": \"123 Anylane Rd\",\r          \"addressLine2\": \"\",\r          \"city\": \"Franklin\",\r          \"state\": \"TN\",\r          \"country\": \"USA\",\r          \"zip\": \"37067\"\r        }\r      }\r    ]\r  },\r  \"opportunity\": {\r    \"opportunityKey\": 0,\r    \"salesUserID\": \"LAMPOCK00\",\r    \"salesUserFullName\": \"TEST ICAR\",\r    \"countryCode\": \"US\",\r    \"dealerCode\": \"44145\",\r    \"salesPersonCrmId\":\"139\",\r    \"crmCstmrId\":\"\",\r    \"crmLeadId\":\"\",\r    \"division\": \"IN\",\r    \"vin\": \"\",\r    \"RegisterOP\": false\r  }\r}"
+						},
 						"description": ""
 					},
 					"response": []

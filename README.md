@@ -66,4 +66,4 @@ db/tests/Postman/icar-samlocal.postman_environment
 db/tests/Postman/ICAR.postman_collection
 ```
 2. Select the icar-samlocal environment 
-3. Select the ICAR collection and run examples under the POC folder.
+3. Select the ICAR collection and run the stubbed out requests under the Auth folder.
