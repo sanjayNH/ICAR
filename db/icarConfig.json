@@ -1,6 +1,21 @@
 {
-    "connectionString":{ "S": "server=mysql;database=icar3;uid=root;"},
-    "key_stage":{ "S": "samlocal"},
-    "key_option":{ "S": "db"}
+        "config": {
+            "M": {
+                "database": {
+                    "S": "icar3"
+                },
+                "host": {
+                    "S": "mysql"
+                },
+                "password": {
+                    "NULL": true
+                },
+                "user": {
+                    "S": "root"
+                }
+            }
+        },
+    "key_option": {
+        "S": "db"
+    }
 }
-    

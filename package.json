@@ -1,0 +1,17 @@
+{
+  "name": "icar",
+  "version": "1.0.0",
+  "description": "ICAR backend api. To be run in aws lambda.",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "mysql2": "^1.4.2",
+    "sequelize": "^4.13.10"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Northhighland",
+  "license": "ISC"
+}

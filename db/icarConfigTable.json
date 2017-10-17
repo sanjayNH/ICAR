@@ -1,11 +1,9 @@
 {
     "TableName": "icar-config",
     "KeySchema": [
-      { "AttributeName": "key_stage", "KeyType": "HASH" },
-      { "AttributeName": "key_option", "KeyType": "RANGE" }
+      { "AttributeName": "key_option", "KeyType": "HASH" }
     ],
     "AttributeDefinitions": [
-      { "AttributeName": "key_stage", "AttributeType": "S" },
       { "AttributeName": "key_option", "AttributeType": "S" }
     ],
     "ProvisionedThroughput": {
